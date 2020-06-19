@@ -5,7 +5,6 @@ def call(String imageName, String repoOwner, String registry, String dockerFile=
   podTemplate(name: 'img', label: label, yaml: podYaml) {
     node(label) {
       body()
-      imageNameTag()
       gitShortCommit()
       container('img') {
         sh """

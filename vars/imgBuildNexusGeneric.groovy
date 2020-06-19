@@ -8,8 +8,8 @@ def call(String imageName, String repoOwner, String registry, String dockerFile=
       gitShortCommit()
       container('img') {
         sh """
-          img build --build-arg buildNumber=${BUILD_NUMBER} --build-arg shortCommit=${env.SHORT_COMMIT} --build-arg commitAuthor="${env.COMMIT_AUTHOR}" -t ${registry}/${repoOwner}/${imageName} ${pwd()}/${dockerFile}
-          img push ${registry}/${repoOwner}/${imageName}
+          img build --build-arg buildNumber=${BUILD_NUMBER} --build-arg shortCommit=${env.SHORT_COMMIT} --build-arg commitAuthor="${env.COMMIT_AUTHOR}" -t ${registry}/${repoOwner}/${imageName}:${BUILD_NUMBER} ${pwd()}/${dockerFile}
+          img push ${registry}/${repoOwner}/${imageName}:${BUILD_NUMBER}
         """
       }
     }

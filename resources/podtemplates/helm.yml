@@ -5,8 +5,7 @@ spec:
   serviceAccountName: jenkins
   containers:
   - name: helm
-    image: ldonleycb/helm
-    imagePullPolicy: Always
+    image: ldonleycb/helm:3
     resources:
       requests:
         memory: "500Mi"

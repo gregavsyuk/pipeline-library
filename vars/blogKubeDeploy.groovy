@@ -22,9 +22,6 @@ def call(repoName, repoOwner, dockerRegistryDomain, deploymentDomain, hostPrefix
           """
           sh label: "deployment url", script: "echo 'deployed to ${url}'"
         }
-        container("jnlp") {
-          gitHubCommitStatus(repoName, repoOwner, env.COMMIT_SHA, url, "your application was successfully deployed", "deployed-to-${hostPrefix}")
-        }
       }
     }
 }

@@ -11,7 +11,7 @@ def call(repoName, repoOwner, dockerRegistryDomain, deploymentDomain, hostPrefix
         repoOwner = repoOwner.toLowerCase()
         url = "http://${hostPrefix}.${repoOwner}-${repoName}.${deploymentDomain}"
         sh label: "update deployment scripts", script: """
-          sed -i 's#REPLACE_IMAGE#${dockerRegistryDomain}/${repoOwner}/${repoName}:latest#' .kubernetes/frontend.yaml
+          sed -i 's#REPLACE_IMAGE#${dockerRegistryDomain}/${repoOwner}/${repoName}:1.0.8#' .kubernetes/frontend.yaml
           sed -i 's#REPLACE_HOSTNAME#${hostPrefix}.${repoOwner}-${repoName}.${deploymentDomain}#' .kubernetes/frontend.yaml
           sed -i 's#REPLACE_REPO_OWNER#${repoOwner}-${hostPrefix}#' .kubernetes/frontend.yaml
         """

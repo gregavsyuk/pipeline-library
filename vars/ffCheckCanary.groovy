@@ -7,7 +7,7 @@ def call(body) {
 		experimentText = sh (script:"cat ${changedFile}", returnStdout: true)
 		sh "cat ${changedFile}"
 	    experimentYaml = readYaml (text: "$experimentText")
-	    env.flagName = experimentYaml.flag
+	    flagName = experimentYaml.flag
 	    if(experimentYaml.labels)
 	    {
 	      canaryBool = experimentYaml.labels.contains("Canary-deploy")
@@ -36,8 +36,12 @@ def call(body) {
                 }
                 echo "$currentPhase"
                 //End of deployment phase shared library
-              }
-	      return currentPhase
+          }
+          else{
+          	currentPhase = "notCanary"
+          }
+          currentInfo = [flagName, currentPhase]
+	      return currentInfo
 	    }
 	}
 }

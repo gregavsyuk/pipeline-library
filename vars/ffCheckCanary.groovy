@@ -8,7 +8,7 @@ def call(body) {
 		sh "cat ${changedFile}"
 	    experimentYaml = readYaml (text: "$experimentText")
 	    env.flagName = experimentYaml.flag
-	    if(=experimentYaml.labels)
+	    if(experimentYaml.labels)
 	    {
 	      canaryBool = experimentYaml.labels.contains("Canary-deploy")
 	      if(canaryBool){

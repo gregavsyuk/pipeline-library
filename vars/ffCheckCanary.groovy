@@ -2,7 +2,8 @@ def call(body) {
 	changedFile = sh (script:"git diff-tree --no-commit-id --name-only -r ${env.GIT_COMMIT}", returnStdout: true)
 	echo(changedFile)
 	experimentFile = changedFile.contains("experiments/")
-	currentPhase = ""
+	currentPhase = "notCanary"
+	flagName = ""
 	if(experimentFile){
 		experimentText = sh (script:"cat ${changedFile}", returnStdout: true)
 		sh "cat ${changedFile}"
@@ -36,9 +37,6 @@ def call(body) {
                 }
                 echo "$currentPhase"
                 //End of deployment phase shared library
-          }
-          else{
-          	currentPhase = "notCanary"
           }
           currentInfo = [flagName, currentPhase]
 	      return currentInfo

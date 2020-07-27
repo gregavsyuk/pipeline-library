@@ -1,5 +1,5 @@
 def call(body) {
-	sh "sleep 30s"
+	sh "sleep 10s"
 	//return true
 	return false
 }

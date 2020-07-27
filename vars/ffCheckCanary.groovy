@@ -38,8 +38,8 @@ def call(body) {
                 echo "$currentPhase"
                 //End of deployment phase shared library
           }
-          currentInfo = [flagName, currentPhase]
-	      return currentInfo
 	    }
 	}
+	currentInfo = [flagName, currentPhase]
+	return currentInfo
 }

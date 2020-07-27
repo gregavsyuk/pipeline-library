@@ -12,4 +12,5 @@ def call(body) {
 	      canaryBool = experimentYaml.labels.contains("Canary-deploy")
 	      return canaryBool
 	    }
+	}
 }
